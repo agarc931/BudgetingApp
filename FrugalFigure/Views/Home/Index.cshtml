@@ -1,8 +1,54 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿
+<div style="display: flex;">
+    <div id="firstcol" style="width:300px;">
+        <div class="typed-out">
+            Lets get
+            <div style="display: flex; padding-bottom:30px">
+                <div class="text">
+                </div>
+            </div>
+            <button class="button-3" role="button" onclick="redirectOnClick()">Begin</button>
+            <script>function redirectOnClick() {
+                    document.location = 'Home/Forum';
+                }</script>
+        </div>
+    </div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div id="financialLiteracy" class="container text-center" style="max-width:285px; background-color:white;">
+        <h1 style="padding-top:15px;padding-bottom:15px;">Financial Literacy</h1>
+        <div class="int-box" style="border-top: 3px solid #bbb;">
+            <a href="https://www.forbes.com/personal-finance/?sh=43c1f731ebb0" target="_blank"><img src="/Images/forbesLogo.png" style="padding-top:10px;"/></a>
+            <a href="https://www.annuity.org/financial-literacy/" target="_blank"><img src="/Images/Annuity.png" style="padding-top:35px;" /></a>
+            <a href="https://www.investopedia.com/terms/f/financial-literacy.asp#:~:text=Financial%20literacy%20is%20the%20ability,a%20lifelong%20journey%20of%20learning." target="_blank">
+                <img src="/Images/Investopedia.png" style="padding-top:40px;" />
+            </a>
+            <a href="https://college.harvard.edu/guides/financial-literacy" target="_blank">
+                <img src="/Images/Harvard_University_logo.svg.png" style="padding-top:40px" />
+            </a>
+            <a href="https://www.fidelity.com/financial-basics/overview" target="_blank">
+                <img src="/Images/Fidelity-Logo-1993.png" />
+            </a>
+        </div>
+    </div>
+    <div id="applications" class="container text-center" style="max-width: 285px; background-color: white;">
+        <h1 style="padding-top:15px;padding-bottom:15px;">Applications</h1>
+        <div class="int-box" style="border-top: 3px solid #bbb;">
+            <a href="https://mint.intuit.com/" target="_blank">
+                <img src="/Images/intuit-mint-logo.png" style="padding-top:15px;" />
+            </a>
+            <a href="https://robinhood.com/us/en/" target="_blank">
+                <img src="/Images/Robinhood-logo.png" style="padding-top:5px;" />
+            </a>
+            <a href="https://www.youneedabudget.com/" target="_blank">
+                <img src="/Images/YNAB.png" />
+            </a>
+            <a href="https://www.acorns.com/" target="_blank">
+                <img src="/Images/Acorns_Logo_944x.png" style="padding-top:30px;" />
+            </a>
+            <a href="https://www.stash.com/" target="_blank">
+                <img src="/Images/stash.png" style="padding-top:30px;" />
+            </a>
+        </div>
+    </div>
+
 </div>

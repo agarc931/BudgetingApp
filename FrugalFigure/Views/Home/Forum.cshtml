@@ -1,0 +1,203 @@
+﻿<h1 style="margin-bottom:0px;font-weight:bold;font-size:40px;">Budget Calculator</h1>
+
+
+
+
+
+<div class="get_budget">
+    <h4>Get your 50/30/20 budget and then personalize it to your priorities and situation</h4>
+
+    <div class="main_upper_budget">
+        <div class="budget_inner">
+            <p><span>The 50/30/20 approach </span>can be a helpful way to get started with budgeting. It’s a simple rule of thumb that suggests you put up to 50% of your after-tax income toward things you need, 30% toward things you want, and 20% toward savings.</p>
+        </div>
+        <div class="right_top_budget">
+            <div class="sec_box needs">
+                <div class="box_sec_thing">
+                    <img src="/images/home.png" alt="">
+                    <h4>50% Needs</h4>
+                </div>
+                <p>Things you must have or can't live without.</p>
+                <p>Examples: housing, groceries, utilities, transportation, child care, debt payments</p>
+            </div>
+
+            <div class="sec_box wants">
+                <div class="box_sec_thing">
+                    <img src="/images/gift_pack.png" alt="">
+                    <h4>30% Wants</h4>
+                </div>
+
+                <p>Things you can cut back on or do without.</p>
+                <p>Examples: entertainment, dining out, clothing, splurges</p>
+            </div>
+
+            <div class="sec_box wants">
+                <div class="box_sec_thing">
+                    <img src="/images/wallet_discount.png" alt="">
+                    <h4>20% Savings</h4>
+                </div>
+
+                <p>Money you save for future goals.</p>
+                <p>Examples: emergency fund, home, vacation, retirement, financial freedom</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<form id="budget_form">
+    <div class="right_reset" tabindex="0">
+        <a class="reset" id="reset" tabindex="0">Reset All</a>
+    </div>
+
+    <h4>Enter your income to get your 50/30/20 budget</h4>
+
+    <div class="form_group">
+        <label for="income_frequency">How often do you receive your income?</label>
+        <select id="income_frequency" tabindex="0">
+            <option></option>
+            <option value="weekly">Weekly</option>
+            <option value="every_week">Every Other Week</option>
+            <option value="twice_month">Twice a Month</option>
+            <option value="once_month">Once a Month</option>
+            <option value="once_year">Once a Year</option>
+        </select>
+    </div>
+
+    <div class="form_group">
+        <label for="after_tax">What is your after-tax income?</label>
+        <span class="currency_data notranslate">$<input name="after_tax" tabindex="0" id="after_tax" type="text" inputmode="numeric" value="" maxlength="9"></span>
+
+
+        <div class="tooltip" id="need_help_tooltip" tabindex="0"><a href="#" tabindex="0">Need Help?</a><span class="tooltiptext tooltip-right">Your after-tax income is the amount in your paycheck after taxes and other deductions are taken out. If you save for retirement by having money deducted from your paycheck, you can include those savings in your budget below - just remember to add the amount to your income.</span></div>
+
+    </div>
+
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<fieldset>
+    <legend>Needs</legend>
+    <table id="submissionTable" class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Amount</td>
+            </tr>
+        </thead>
+
+        <tr id="tablerow0">
+            <td>
+                <div class="editor-field">
+                    <input class="text-box single-line" name="Name[0]" type="text" value="" required="required" />
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    <input class="text-box single-line" name="Amount[0]" type="text" value="" required="required" />
+                </div>
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary" onclick="removeTr(0);">Delete</button>
+            </td>
+            <td></td>
+        </tr>
+
+    </table>
+    <p>
+        <button id="add" type="button" class="btn btn-primary">Add</button>
+    </p>
+    <hr />
+
+    <legend>Wants</legend>
+    <table id="submissionTable" class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Amount</td>
+            </tr>
+        </thead>
+
+        <tr id="tablerow0">
+            <td>
+                <div class="editor-field">
+                    <input class="text-box single-line" name="Name[0]" type="text" value="" required="required" />
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    <input class="text-box single-line" name="Amount[0]" type="text" value="" required="required" />
+                </div>
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary" onclick="removeTr(0);">Delete</button>
+            </td>
+            <td></td>
+        </tr>
+
+    </table>
+    <p>
+        <button id="add" type="button" class="btn btn-primary">Add</button>
+    </p>
+    <hr />
+
+</fieldset>
+@*<fieldset>
+    <legend>Wants</legend>
+    <table id="submissionTable" class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Amount</td>
+            </tr>
+        </thead>
+
+        <tr id="tablerow0">
+            <td>
+                <div class="editor-field">
+                    <input class="text-box single-line" name="Name[0]" type="text" value="" required="required" />
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    <input class="text-box single-line" name="Amount[0]" type="text" value="" required="required" />
+                </div>
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary" onclick="removeTr(0);">Delete</button>
+            </td>
+            <td></td>
+        </tr>
+
+    </table>
+    <p>
+        <button id="add" type="button" class="btn btn-primary">Add</button>
+    </p>
+    <hr />
+
+</fieldset>*@
+<script type="text/javascript">
+    var counter = 1;
+    $(function () {
+        $('#add').click(function () {
+            $('<tr id="tablerow' + counter + '"><td>' +
+                '<input type="text" class="text-box single-line" name="Name[' + counter + ']" value="" required="required" />' +
+                '</td>' +
+                '<td>' +
+                '<input type="text" class="text-box single-line" name="Amount[' + counter + ']" value="" required="required" />' +
+                '</td>' +
+                '<td>' +
+                '<button type="button" class="btn btn-primary" onclick="removeTr(' + counter + ');">Delete</button>' +
+                '</td>' +
+                '</tr>').appendTo('#submissionTable');
+            counter++;
+            return false;
+        });
+    });
+    function removeTr(index) {
+        if (counter > 1) {
+            $('#tablerow' + index).remove();
+            counter--;
+        }
+        return false;
+    }</script>
