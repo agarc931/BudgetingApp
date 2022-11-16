@@ -14,15 +14,24 @@ html {
 
 }
 containter {
-    background-color: #C0C0C0
+    background-color: #C0C0C0;
 }
-
+legend{
+    color:green;
+}
 body {
     margin-bottom: 60px;
-    background-color: #f2f2f2;
 }
+
+body.indexForm{
+    background-image: url("/Images/Background.png");
+    background-size: cover;
+    
+}
+
+
 .typed-out {
-    color: black;
+    color: white;
     font-size: 55px;
     padding: 15px;
     width:auto;
@@ -31,6 +40,10 @@ body {
 .text {
     color: green;
 
+}
+
+.footer {
+    background-color: white;
 }
 h1 {
     color: black;
