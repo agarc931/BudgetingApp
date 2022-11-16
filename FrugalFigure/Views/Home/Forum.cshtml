@@ -98,7 +98,7 @@
                 </div>
             </td>
             <td>
-                <button type="button" class="btn btn-primary" onclick="removeTr(0);">Delete</button>
+                <button type="button" class="btn btn-primary" onclick="removeTr('needs',0);">Delete</button>
             </td>
             <td></td>
         </tr>
@@ -131,7 +131,7 @@
                 </div>
             </td>
             <td>
-                <button type="button" class="btn btn-primary" onclick="removeTr(0);">Delete</button>
+                <button type="button" class="btn btn-primary" onclick="removeTr('wants',0);">Delete</button>
             </td>
             <td></td>
         </tr>
@@ -165,7 +165,7 @@
                 </div>
             </td>
             <td>
-                <button type="button" class="btn btn-primary" onclick="removeTr(0);">Delete</button>
+                <button type="button" class="btn btn-primary" onclick="removeTr('needs',0);">Delete</button>
             </td>
             <td></td>
         </tr>
@@ -226,9 +226,9 @@
             return false;
         });
     });
-    function removeTr(index) {
+    function removeTr(table,index) {
         if (counter > 1) {
-            $('#tablerow' + index).remove();
+            $('#'+table + 'table' + index).remove();
             counter--;
         }
         return false;
