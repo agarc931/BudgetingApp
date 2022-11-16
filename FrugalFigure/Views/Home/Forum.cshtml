@@ -78,7 +78,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <fieldset>
     <legend>Needs</legend>
-    <table id="submissionTable" class="table table-bordered">
+    <table id="needsTable" class="table table-bordered">
         <thead>
             <tr>
                 <td>Name</td>
@@ -105,12 +105,13 @@
 
     </table>
     <p>
-        <button id="add" type="button" class="btn btn-primary">Add</button>
+        <button id="addNeeds" type="button" class="btn btn-primary">Add</button>
     </p>
     <hr />
-
+</fieldset>
+<fieldset>
     <legend>Wants</legend>
-    <table id="submissionTable" class="table table-bordered">
+    <table id="wantsTable" class="table table-bordered">
         <thead>
             <tr>
                 <td>Name</td>
@@ -137,14 +138,14 @@
 
     </table>
     <p>
-        <button id="add" type="button" class="btn btn-primary">Add</button>
+        <button id="addWants" type="button" class="btn btn-primary">Add</button>
     </p>
     <hr />
 
 </fieldset>
-@*<fieldset>
-    <legend>Wants</legend>
-    <table id="submissionTable" class="table table-bordered">
+<fieldset>
+    <legend>Savings</legend>
+    <table id="savingsTable" class="table table-bordered">
         <thead>
             <tr>
                 <td>Name</td>
@@ -171,26 +172,57 @@
 
     </table>
     <p>
-        <button id="add" type="button" class="btn btn-primary">Add</button>
+        <button id="addSavings" type="button" class="btn btn-primary">Add</button>
     </p>
     <hr />
 
-</fieldset>*@
-<script type="text/javascript">
-    var counter = 1;
+</fieldset>
+<script type="text/javascript">var counter = [1, 1, 1];
     $(function () {
-        $('#add').click(function () {
-            $('<tr id="tablerow' + counter + '"><td>' +
-                '<input type="text" class="text-box single-line" name="Name[' + counter + ']" value="" required="required" />' +
+        $('#addNeeds').click(function () {
+            $('<tr id="tablerow' + counter[0] + '"><td>' +
+                '<input type="text" class="text-box single-line" name="Name[' + counter[0] + ']" value="" required="required" />' +
                 '</td>' +
                 '<td>' +
-                '<input type="text" class="text-box single-line" name="Amount[' + counter + ']" value="" required="required" />' +
+                '<input type="text" class="text-box single-line" name="Amount[' + counter[0] + ']" value="" required="required" />' +
                 '</td>' +
                 '<td>' +
-                '<button type="button" class="btn btn-primary" onclick="removeTr(' + counter + ');">Delete</button>' +
+                '<button type="button" class="btn btn-primary" onclick="removeTr(' + counter[0] + ');">Delete</button>' +
                 '</td>' +
-                '</tr>').appendTo('#submissionTable');
-            counter++;
+                '</tr>').appendTo('#needsTable');
+            counter[0]++;
+            return false;
+        });
+    });
+    $(function () {
+        $('#addWants').click(function () {
+            $('<tr id="tablerow' + counter[1] + '"><td>' +
+                '<input type="text" class="text-box single-line" name="Name[' + counter[1] + ']" value="" required="required" />' +
+                '</td>' +
+                '<td>' +
+                '<input type="text" class="text-box single-line" name="Amount[' + counter[1] + ']" value="" required="required" />' +
+                '</td>' +
+                '<td>' +
+                '<button type="button" class="btn btn-primary" onclick="removeTr(' + counter[1] + ');">Delete</button>' +
+                '</td>' +
+                '</tr>').appendTo('#wantsTable');
+            counter[1]++;
+            return false;
+        });
+    });
+    $(function () {
+        $('#addSavings').click(function () {
+            $('<tr id="tablerow' + counter[2] + '"><td>' +
+                '<input type="text" class="text-box single-line" name="Name[' + counter[2] + ']" value="" required="required" />' +
+                '</td>' +
+                '<td>' +
+                '<input type="text" class="text-box single-line" name="Amount[' + counter[2] + ']" value="" required="required" />' +
+                '</td>' +
+                '<td>' +
+                '<button type="button" class="btn btn-primary" onclick="removeTr(' + counter[2] + ');">Delete</button>' +
+                '</td>' +
+                '</tr>').appendTo('#savingsTable');
+            counter[2]++;
             return false;
         });
     });
