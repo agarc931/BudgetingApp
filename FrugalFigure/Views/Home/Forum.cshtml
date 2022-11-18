@@ -44,139 +44,142 @@
     </div>
 </div>
 
+<div id="mainContainer" style="background-color:white;">
+    <form id="budget_form">
+        <div class="right_reset" tabindex="0">
+            <a class="reset" id="reset" tabindex="0">Reset All</a>
+        </div>
 
-<form id="budget_form">
-    <div class="right_reset" tabindex="0">
-        <a class="reset" id="reset" tabindex="0">Reset All</a>
-    </div>
+        <h4>Enter your income to get your 50/30/20 budget</h4>
 
-    <h4>Enter your income to get your 50/30/20 budget</h4>
+        <div class="form_group">
+            <label for="income_frequency">How often do you receive your income?</label>
+            <select id="income_frequency" tabindex="0">
+                <option></option>
+                <option value="weekly">Weekly</option>
+                <option value="every_week">Every Other Week</option>
+                <option value="twice_month">Twice a Month</option>
+                <option value="once_month">Once a Month</option>
+                <option value="once_year">Once a Year</option>
+            </select>
+        </div>
 
-    <div class="form_group">
-        <label for="income_frequency">How often do you receive your income?</label>
-        <select id="income_frequency" tabindex="0">
-            <option></option>
-            <option value="weekly">Weekly</option>
-            <option value="every_week">Every Other Week</option>
-            <option value="twice_month">Twice a Month</option>
-            <option value="once_month">Once a Month</option>
-            <option value="once_year">Once a Year</option>
-        </select>
-    </div>
-
-    <div class="form_group">
-        <label for="after_tax">What is your after-tax income?</label>
-        <span class="currency_data notranslate">$<input name="after_tax" tabindex="0" id="after_tax" type="text" inputmode="numeric" value="" maxlength="9"></span>
+        <div class="form_group">
+            <label for="after_tax">What is your after-tax income?</label>
+            <span class="currency_data notranslate">$<input name="after_tax" tabindex="0" id="after_tax" type="text" inputmode="numeric" value="" maxlength="9"></span>
 
 
-        <div class="tooltip" id="need_help_tooltip" tabindex="0"><a href="#" tabindex="0">Need Help?</a><span class="tooltiptext tooltip-right">Your after-tax income is the amount in your paycheck after taxes and other deductions are taken out. If you save for retirement by having money deducted from your paycheck, you can include those savings in your budget below - just remember to add the amount to your income.</span></div>
+            <div class="tooltip" id="need_help_tooltip" tabindex="0"><a href="#" tabindex="0">Need Help?</a><span class="tooltiptext tooltip-right">Your after-tax income is the amount in your paycheck after taxes and other deductions are taken out. If you save for retirement by having money deducted from your paycheck, you can include those savings in your budget below - just remember to add the amount to your income.</span></div>
 
-    </div>
+        </div>
 
-</form>
+    </form>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<fieldset>
-    <legend>Needs</legend>
-    <table id="needsTable" class="table table-bordered">
-        <thead>
-            <tr>
-                <td>Name</td>
-                <td>Amount</td>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <fieldset>
+        <legend>Needs</legend>
+        <table id="needsTable" class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Amount</td>
+                </tr>
+            </thead>
+
+            <tr id="needstablerow0">
+                <td>
+                    <div class="editor-field">
+                        <input class="text-box single-line" name="Name[0]" type="text" value="" required="required" />
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-field">
+                        <input class="text-box single-line" name="Amount[0]" type="text" value="" required="required" />
+                    </div>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary" onclick="removeTr('needs',0,0);">Delete</button>
+                </td>
+                <td></td>
             </tr>
-        </thead>
 
-        <tr id="needstablerow0">
-            <td>
-                <div class="editor-field">
-                    <input class="text-box single-line" name="Name[0]" type="text" value="" required="required" />
-                </div>
-            </td>
-            <td>
-                <div class="editor-field">
-                    <input class="text-box single-line" name="Amount[0]" type="text" value="" required="required" />
-                </div>
-            </td>
-            <td>
-                <button type="button" class="btn btn-primary" onclick="removeTr('needs',0,0);">Delete</button>
-            </td>
-            <td></td>
-        </tr>
+        </table>
+        <p>
+            <button id="addNeeds" type="button" class="btn btn-primary">Add</button>
+        </p>
+        <hr />
+    </fieldset>
+    <fieldset>
+        <legend>Wants</legend>
+        <table id="wantsTable" class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Amount</td>
+                </tr>
+            </thead>
 
-    </table>
-    <p>
-        <button id="addNeeds" type="button" class="btn btn-primary">Add</button>
-    </p>
-    <hr />
-</fieldset>
-<fieldset>
-    <legend>Wants</legend>
-    <table id="wantsTable" class="table table-bordered">
-        <thead>
-            <tr>
-                <td>Name</td>
-                <td>Amount</td>
+            <tr id="wantstablerow0">
+                <td>
+                    <div class="editor-field">
+                        <input class="text-box single-line" name="Name[0]" type="text" value="" required="required" />
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-field">
+                        <input class="text-box single-line" name="Amount[0]" type="text" value="" required="required" />
+                    </div>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary" onclick="removeTr('wants',0,1);">Delete</button>
+                </td>
+                <td></td>
             </tr>
-        </thead>
 
-        <tr id="wantstablerow0">
-            <td>
-                <div class="editor-field">
-                    <input class="text-box single-line" name="Name[0]" type="text" value="" required="required" />
-                </div>
-            </td>
-            <td>
-                <div class="editor-field">
-                    <input class="text-box single-line" name="Amount[0]" type="text" value="" required="required" />
-                </div>
-            </td>
-            <td>
-                <button type="button" class="btn btn-primary" onclick="removeTr('wants',0,1);">Delete</button>
-            </td>
-            <td></td>
-        </tr>
+        </table>
+        <p>
+            <button id="addWants" type="button" class="btn btn-primary">Add</button>
+        </p>
+        <hr />
 
-    </table>
-    <p>
-        <button id="addWants" type="button" class="btn btn-primary">Add</button>
-    </p>
-    <hr />
+    </fieldset>
+    <fieldset>
+        <legend>Savings</legend>
+        <table id="savingsTable" class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Amount</td>
+                </tr>
+            </thead>
 
-</fieldset>
-<fieldset>
-    <legend>Savings</legend>
-    <table id="savingsTable" class="table table-bordered">
-        <thead>
-            <tr>
-                <td>Name</td>
-                <td>Amount</td>
+            <tr id="savingstablerow0">
+                <td>
+                    <div class="editor-field">
+                        <input class="text-box single-line" name="Name[0]" type="text" value="" required="required" />
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-field">
+                        <input class="text-box single-line" name="Amount[0]" type="text" value="" required="required" />
+                    </div>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary" onclick="removeTr('savings',0,2);">Delete</button>
+                </td>
+                <td></td>
             </tr>
-        </thead>
 
-        <tr id="savingstablerow0">
-            <td>
-                <div class="editor-field">
-                    <input class="text-box single-line" name="Name[0]" type="text" value="" required="required" />
-                </div>
-            </td>
-            <td>
-                <div class="editor-field">
-                    <input class="text-box single-line" name="Amount[0]" type="text" value="" required="required" />
-                </div>
-            </td>
-            <td>
-                <button type="button" class="btn btn-primary" onclick="removeTr('savings',0,2);">Delete</button>
-            </td>
-            <td></td>
-        </tr>
+        </table>
+        <p>
+            <button id="addSavings" type="button" class="btn btn-primary">Add</button>
+        </p>
+        <hr />
 
-    </table>
-    <p>
-        <button id="addSavings" type="button" class="btn btn-primary">Add</button>
-    </p>
-    <hr />
+    </fieldset>
+    <button class="button-3" role="button" asp-action="">Submit</button>
+</div>
 
-</fieldset>
 <script type="text/javascript">var counter = [1, 1, 1];
     $(function () {
         $('#addNeeds').click(function () {
