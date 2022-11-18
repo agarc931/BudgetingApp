@@ -177,7 +177,7 @@
     <hr />
 
 </fieldset>
-<script type="text/javascript">var counter = ( 1, 1, 1);
+<script type="text/javascript">var counter = [1, 1, 1];
     $(function () {
         $('#addNeeds').click(function () {
             $('<tr id="needstablerow' + counter[0] + '"><td>' +
@@ -187,7 +187,7 @@
                 '<input type="text" class="text-box single-line" name="Amount[' + counter[0] + ']" value="" required="required" />' +
                 '</td>' +
                 '<td>' +
-                '<button type="button" class="btn btn-primary" onclick="removeTr(' + counter[0] + ');">Delete</button>' +
+                '<button type="button" class="btn btn-primary" onclick="removeTr(' + counter[0] + ',0);">Delete</button>' +
                 '</td>' +
                 '</tr>').appendTo('#needsTable');
             counter[0]++;
@@ -203,7 +203,7 @@
                 '<input type="text" class="text-box single-line" name="Amount[' + counter[1] + ']" value="" required="required" />' +
                 '</td>' +
                 '<td>' +
-                '<button type="button" class="btn btn-primary" onclick="removeTr(' + counter[1] + ');">Delete</button>' +
+                '<button type="button" class="btn btn-primary" onclick="removeTr(' + counter[1] + ',1);">Delete</button>' +
                 '</td>' +
                 '</tr>').appendTo('#wantsTable');
             counter[1]++;
@@ -219,16 +219,18 @@
                 '<input type="text" class="text-box single-line" name="Amount[' + counter[2] + ']" value="" required="required" />' +
                 '</td>' +
                 '<td>' +
-                '<button type="button" class="btn btn-primary" onclick="removeTr(' + counter[2] + ');">Delete</button>' +
+                '<button type="button" class="btn btn-primary" onclick="removeTr(' + counter[2] + ',2);">Delete</button>' +
                 '</td>' +
                 '</tr>').appendTo('#savingsTable');
             counter[2]++;
             return false;
         });
     });
-    function removeTr(table,index,number) {
-        if (counter > 1) {
-            $('#' + table + 'Table' + index).remove();
+    function removeTr(index, number) {
+        var tempData = ["needstablerow", "wantstablerow", "savingstablerow"]
+
+        if (counter[number] > 1) {
+            $('#' + tempData[number].toString() + index).remove();
             counter[number]--;
         }
         return false;
