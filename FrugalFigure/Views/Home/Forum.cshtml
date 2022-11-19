@@ -1,21 +1,14 @@
 ﻿<h1 style="margin-bottom:0px;font-weight:bold;font-size:40px;">Budget Calculator</h1>
-
-
-
-
-
 <div class="get_budget">
-    <h4>Get your 50/30/20 budget and then personalize it to your priorities and situation</h4>
+    <h4>Get your budget and then personalize it to your priorities and situation</h4>
 
     <div class="main_upper_budget">
-        <div class="budget_inner">
-            <p><span>The 50/30/20 approach </span>can be a helpful way to get started with budgeting. It’s a simple rule of thumb that suggests you put up to 50% of your after-tax income toward things you need, 30% toward things you want, and 20% toward savings.</p>
-        </div>
+
         <div class="right_top_budget">
             <div class="sec_box needs">
                 <div class="box_sec_thing">
                     <img src="/images/home.png" alt="">
-                    <h4>50% Needs</h4>
+                    <h4>Needs</h4>
                 </div>
                 <p>Things you must have or can't live without.</p>
                 <p>Examples: housing, groceries, utilities, transportation, child care, debt payments</p>
@@ -24,7 +17,7 @@
             <div class="sec_box wants">
                 <div class="box_sec_thing">
                     <img src="/images/gift_pack.png" alt="">
-                    <h4>30% Wants</h4>
+                    <h4>Wants</h4>
                 </div>
 
                 <p>Things you can cut back on or do without.</p>
@@ -34,7 +27,7 @@
             <div class="sec_box wants">
                 <div class="box_sec_thing">
                     <img src="/images/wallet_discount.png" alt="">
-                    <h4>20% Savings</h4>
+                    <h4>Savings</h4>
                 </div>
 
                 <p>Money you save for future goals.</p>
@@ -50,26 +43,32 @@
             <a class="reset" id="reset" tabindex="0">Reset All</a>
         </div>
 
-        <h4>Enter your income to get your 50/30/20 budget</h4>
+        <h4>Enter your income to get your budget</h4>
+
+        <div class="form_group">
+            <label for="budgetMethod">What budgeting method would you like? (Needs/Wants/Savings)</label>
+            <select id="budgetMethod" tabindex="0" required="required">
+                <option value="selectcard">--- Please select ---</option>
+                <option value="option1">Low 50/30/20</option>
+                <option value="option2">Moderate 50/20/30</option>
+                <option value="option3">High 50/10/40</option>
+            </select>
+        </div>
 
         <div class="form_group">
             <label for="income_frequency">How often do you receive your income?</label>
-            <select id="income_frequency" tabindex="0">
-                <option></option>
+            <select id="income_frequency" tabindex="0" required="required">
+                <option value="selectcard">--- Please select ---</option>
                 <option value="weekly">Weekly</option>
                 <option value="every_week">Every Other Week</option>
-                <option value="twice_month">Twice a Month</option>
                 <option value="once_month">Once a Month</option>
                 <option value="once_year">Once a Year</option>
             </select>
         </div>
 
         <div class="form_group">
-            <label for="after_tax">What is your after-tax income?</label>
-            <span class="currency_data notranslate">$<input name="after_tax" tabindex="0" id="after_tax" type="text" inputmode="numeric" value="" maxlength="9"></span>
-
-
-            <div class="tooltip" id="need_help_tooltip" tabindex="0"><a href="#" tabindex="0">Need Help?</a><span class="tooltiptext tooltip-right">Your after-tax income is the amount in your paycheck after taxes and other deductions are taken out. If you save for retirement by having money deducted from your paycheck, you can include those savings in your budget below - just remember to add the amount to your income.</span></div>
+            <label for="after_tax">What is your after-tax income?</label> $
+            <input name="after_tax" tabindex="0" id="incomeText" type="text" inputmode="numeric" value="0" maxlength="9">
 
         </div>
 
@@ -89,12 +88,12 @@
             <tr id="needstablerow0">
                 <td>
                     <div class="editor-field">
-                        <input class="text-box single-line" name="Name[0]" type="text" value="" required="required" />
+                        <input class="text-box single-line" id="NeedName[0]" type="text" value="" required="required" />
                     </div>
                 </td>
                 <td>
                     <div class="editor-field">
-                        <input class="text-box single-line" name="Amount[0]" type="text" value="" required="required" />
+                        <input class="text-box single-line" id="NeedAmount[0]" type="text" value="" required="required" />
                     </div>
                 </td>
                 <td>
@@ -122,12 +121,12 @@
             <tr id="wantstablerow0">
                 <td>
                     <div class="editor-field">
-                        <input class="text-box single-line" name="Name[0]" type="text" value="" required="required" />
+                        <input class="text-box single-line" id="WantName[0]" type="text" value="" required="required" />
                     </div>
                 </td>
                 <td>
                     <div class="editor-field">
-                        <input class="text-box single-line" name="Amount[0]" type="text" value="" required="required" />
+                        <input class="text-box single-line" id="WantAmount[0]" type="text" value="" required="required" />
                     </div>
                 </td>
                 <td>
@@ -156,12 +155,12 @@
             <tr id="savingstablerow0">
                 <td>
                     <div class="editor-field">
-                        <input class="text-box single-line" name="Name[0]" type="text" value="" required="required" />
+                        <input class="text-box single-line" id="SavingName[0]" type="text" value="" required="required" />
                     </div>
                 </td>
                 <td>
                     <div class="editor-field">
-                        <input class="text-box single-line" name="Amount[0]" type="text" value="" required="required" />
+                        <input class="text-box single-line" id="SavingAmount[0]" type="text" value="" required="required" />
                     </div>
                 </td>
                 <td>
@@ -177,17 +176,47 @@
         <hr />
 
     </fieldset>
-    <button class="button-3" role="button" asp-action="">Submit</button>
+    <p></p><button id="submitButton" type="button" class="btn btn-primary">Submit</button></p>
+    <div id="bottomPlaceholder" hidden="hidden">
+        <div class="grid-container" style="grid-template-columns:auto auto auto auto;">
+            <div id="bottomGrid1" class="grid-item"></div>
+            <div id="bottomGrid2" class="grid-item">Income</div>
+            <div id="bottomGrid3" class="grid-item">Allocated</div>
+            <div id="bottomGrid4" class="grid-item">Remaining</div>
+            <div id="bottomGrid5" class="grid-item"></div>
+            <div id="bottomGrid6" class="grid-item"></div>
+            <div id="bottomGrid7" class="grid-item"></div>
+            <div id="bottomGrid8" class="grid-item"></div>
+            <div id="bottomGrid9" class="grid-item"></div>
+            <div id="bottomGrid10" class="grid-item"></div>
+            <div id="bottomGrid11" class="grid-item">Budget</div>
+            <div id="bottomGrid12" class="grid-item">Difference</div>
+            <div id="bottomGrid13" class="grid-item">Needs</div>
+            <div id="bottomGrid14" class="grid-item"></div>
+            <div id="bottomGrid15" class="grid-item"></div>
+            <div id="bottomGrid16" class="grid-item"></div>
+            <div id="bottomGrid17" class="grid-item">Wants</div>
+            <div id="bottomGrid18" class="grid-item"></div>
+            <div id="bottomGrid19" class="grid-item"></div>
+            <div id="bottomGrid20" class="grid-item"></div>
+            <div id="bottomGrid21" class="grid-item">Savings</div>
+            <div id="bottomGrid22" class="grid-item"></div>
+            <div id="bottomGrid23" class="grid-item"></div>
+            <div id="bottomGrid24" class="grid-item"></div>
+        </div>
+    </div>
 </div>
 
-<script type="text/javascript">var counter = [1, 1, 1];
+<script type="text/javascript">
+    var counter = [1, 1, 1];
+
     $(function () {
         $('#addNeeds').click(function () {
             $('<tr id="needstablerow' + counter[0] + '"><td>' +
-                '<input type="text" class="text-box single-line" name="Name[' + counter[0] + ']" value="" required="required" />' +
+                '<input type="text" class="text-box single-line" id="NeedName[' + counter[0] + ']" value="" required="required" />' +
                 '</td>' +
                 '<td>' +
-                '<input type="text" class="text-box single-line" name="Amount[' + counter[0] + ']" value="" required="required" />' +
+                '<input type="text" class="text-box single-line" id="NeedAmount[' + counter[0] + ']" value="" required="required" />' +
                 '</td>' +
                 '<td>' +
                 '<button type="button" class="btn btn-primary" onclick="removeTr(' + counter[0] + ',0);">Delete</button>' +
@@ -200,10 +229,10 @@
     $(function () {
         $('#addWants').click(function () {
             $('<tr id="wantstablerow' + counter[1] + '"><td>' +
-                '<input type="text" class="text-box single-line" name="Name[' + counter[1] + ']" value="" required="required" />' +
+                '<input type="text" class="text-box single-line" id="WantName[' + counter[1] + ']" value="" required="required" />' +
                 '</td>' +
                 '<td>' +
-                '<input type="text" class="text-box single-line" name="Amount[' + counter[1] + ']" value="" required="required" />' +
+                '<input type="text" class="text-box single-line" id="WantAmount[' + counter[1] + ']" value="" required="required" />' +
                 '</td>' +
                 '<td>' +
                 '<button type="button" class="btn btn-primary" onclick="removeTr(' + counter[1] + ',1);">Delete</button>' +
@@ -216,10 +245,10 @@
     $(function () {
         $('#addSavings').click(function () {
             $('<tr id="savingstablerow' + counter[2] + '"><td>' +
-                '<input type="text" class="text-box single-line" name="Name[' + counter[2] + ']" value="" required="required" />' +
+                '<input type="text" class="text-box single-line" id="SavingName[' + counter[2] + ']" value="" required="required" />' +
                 '</td>' +
                 '<td>' +
-                '<input type="text" class="text-box single-line" name="Amount[' + counter[2] + ']" value="" required="required" />' +
+                '<input type="text" class="text-box single-line" id="SavingAmount[' + counter[2] + ']" value="" required="required" />' +
                 '</td>' +
                 '<td>' +
                 '<button type="button" class="btn btn-primary" onclick="removeTr(' + counter[2] + ',2);">Delete</button>' +
@@ -229,6 +258,112 @@
             return false;
         });
     });
+    $(function () {
+        $('#submitButton').click(function () {
+            document.getElementById("bottomPlaceholder").hidden = false;
+            var results = getTableData();
+            var incomeFreq = 0;
+            var budgetMethod;
+            var income = parseFloat(document.getElementById("incomeText").value);
+            if ((incomeFreq = validateIncomeFrequency()) == false) {
+                return false;
+            }
+            if ((budgetMethod = validateBudgetingMethod()) == false) {
+                return false;
+            }
+
+            //Income
+            document.getElementById("bottomGrid6").innerHTML = "$" + formatMoneyString(income * incomeFreq);
+            //Allocated
+            document.getElementById("bottomGrid7").innerHTML = "$" + formatMoneyString(results.reduce((partialSum, a) => partialSum + a, 0));
+            //Remaining
+            document.getElementById("bottomGrid8").innerHTML = "$" + formatMoneyString((income * incomeFreq) - results.reduce((partialSum, a) => partialSum + a, 0));
+            //BudgetingAlgo
+            document.getElementById("bottomGrid10").innerHTML = budgetMethod[0] + '\\' + budgetMethod[1] + '\\' + budgetMethod[2];
+            //AllocNeeds,Wants,Savings
+            document.getElementById("bottomGrid14").innerHTML = "$" + formatMoneyString((incomeFreq *income) * (budgetMethod[0]/100));
+            document.getElementById("bottomGrid18").innerHTML = "$" + formatMoneyString((incomeFreq *income) * (budgetMethod[1]/100));
+            document.getElementById("bottomGrid22").innerHTML = "$" + formatMoneyString((incomeFreq *income) * (budgetMethod[2]/100));
+
+            //Budget
+            document.getElementById("bottomGrid15").innerHTML = "$" + formatMoneyString(result[0]);
+            document.getElementById("bottomGrid19").innerHTML = "$" + formatMoneyString(result[1]);
+            document.getElementById("bottomGrid23").innerHTML = "$" + formatMoneyString(result[2]);
+
+            //Difference
+            document.getElementById("bottomGrid16").innerHTML = "$" + formatMoneyString((incomeFreq * income) * (budgetMethod[0] / 100) - result[0]);
+            document.getElementById("bottomGrid20").innerHTML = "$" + formatMoneyString((incomeFreq * income) * (budgetMethod[1] / 100) - result[1]);
+            document.getElementById("bottomGrid24").innerHTML = "$" + formatMoneyString((incomeFreq * income) * (budgetMethod[2] / 100) - result[2]);
+        });
+    });
+
+    function validateBudgetingMethod() {
+        var ddl = document.getElementById("budgetMethod");
+        var selectedValue = ddl.options[ddl.selectedIndex].value;
+        if (selectedValue == "selectcard") {
+            alert("Please select a budgeting method");
+            return false;
+        }
+        var result;
+        switch (selectedValue) {
+            case 'option1':
+                result = [50, 30, 20];
+                break;
+            case 'option2':
+                result = [50, 20, 30];
+                break;
+            case 'option3':
+                result = [50, 10, 40];
+                break;
+        }
+        return result;
+    }
+
+    function validateIncomeFrequency() {
+        var ddl = document.getElementById("income_frequency");
+        var selectedValue = ddl.options[ddl.selectedIndex].value;
+        if (selectedValue == "selectcard") {
+            alert("Please select an income frequency");
+            return false;
+        }
+
+        switch (selectedValue) {
+            case 'weekly':
+                return 52;
+            case 'every_week':
+                return 52;
+            case 'twice_month':
+                return 24;
+            case 'once_year':
+                return 1;
+        }
+    }
+
+    function formatMoneyString(num) {
+        var str = num.toString().split('.');
+        if (str[0].length >= 5) {
+            str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+        }
+        if (str[1] && str[1].length >= 5) {
+            str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+        }
+        return str.join('.');
+    }
+
+    function getTableData() {
+        var results = [0, 0, 0];
+
+        for (var x = 0; x < counter.length; x++) {
+            for (var y = 0; y < counter[x]; y++) {
+                if (parseFloat(document.getElementById("NeedAmount[" + y + "]").value)) {
+                    results[x] += parseFloat(document.getElementById("NeedAmount[" + y + "]").value);
+                }
+
+            }
+        }
+        return results;
+    };
+
     function removeTr(index, number) {
         var tempData = ["needstablerow", "wantstablerow", "savingstablerow"]
 
@@ -236,5 +371,16 @@
             $('#' + tempData[number].toString() + index).remove();
             counter[number]--;
         }
-        return false;
-    }</script>
+    }
+
+    function changeFrugality() {
+
+    }; $(document).ready(function () {
+        $(window).keydown(function (event) {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+                return false;
+            }
+        });
+    });
+</script>
