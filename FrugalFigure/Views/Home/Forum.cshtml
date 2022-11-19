@@ -43,7 +43,7 @@
             <a class="reset" id="reset" tabindex="0">Reset All</a>
         </div>
 
-        <h4>Enter your income to get your budget</h4>
+        <h4>Enter your income to get your monthly budget</h4>
 
         <div class="form_group">
             <label for="budgetMethod">What budgeting method would you like? (Needs/Wants/Savings)</label>
@@ -266,11 +266,12 @@
             var budgetMethod;
             var income = parseFloat(document.getElementById("incomeText").value);
             if ((incomeFreq = validateIncomeFrequency()) == false) {
-                return false;
+                return ;
             }
             if ((budgetMethod = validateBudgetingMethod()) == false) {
-                return false;
+                return ;
             }
+
 
             //Income
             document.getElementById("bottomGrid6").innerHTML = "$" + formatMoneyString(income * incomeFreq);
@@ -286,14 +287,14 @@
             document.getElementById("bottomGrid22").innerHTML = "$" + formatMoneyString((incomeFreq *income) * (budgetMethod[2]/100));
 
             //Budget
-            document.getElementById("bottomGrid15").innerHTML = "$" + formatMoneyString(result[0]);
-            document.getElementById("bottomGrid19").innerHTML = "$" + formatMoneyString(result[1]);
-            document.getElementById("bottomGrid23").innerHTML = "$" + formatMoneyString(result[2]);
+            document.getElementById("bottomGrid23").innerHTML = "$" + formatMoneyString(results[2]);
+            document.getElementById("bottomGrid19").innerHTML = "$" + formatMoneyString(results[1]);
+            document.getElementById("bottomGrid15").innerHTML = "$" + formatMoneyString(results[0]);
 
             //Difference
-            document.getElementById("bottomGrid16").innerHTML = "$" + formatMoneyString((incomeFreq * income) * (budgetMethod[0] / 100) - result[0]);
-            document.getElementById("bottomGrid20").innerHTML = "$" + formatMoneyString((incomeFreq * income) * (budgetMethod[1] / 100) - result[1]);
-            document.getElementById("bottomGrid24").innerHTML = "$" + formatMoneyString((incomeFreq * income) * (budgetMethod[2] / 100) - result[2]);
+            document.getElementById("bottomGrid16").innerHTML = "$" + formatMoneyString((incomeFreq * income) * (budgetMethod[0] / 100) - results[0]);
+            document.getElementById("bottomGrid20").innerHTML = "$" + formatMoneyString((incomeFreq * income) * (budgetMethod[1] / 100) - results[1]);
+            document.getElementById("bottomGrid24").innerHTML = "$" + formatMoneyString((incomeFreq * income) * (budgetMethod[2] / 100) - results[2]);
         });
     });
 
@@ -329,13 +330,13 @@
 
         switch (selectedValue) {
             case 'weekly':
-                return 52;
+                return (13/3);
             case 'every_week':
-                return 52;
+                return (13/6);
             case 'twice_month':
-                return 24;
+                return (1/6);
             case 'once_year':
-                return 1;
+                return (1/12);
         }
     }
 
@@ -345,18 +346,18 @@
             str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
         }
         if (str[1] && str[1].length >= 5) {
-            str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+            str[1] = str[1].replace(/(\d{3})/g, '$1 ').substring(0,2);
         }
         return str.join('.');
     }
 
     function getTableData() {
         var results = [0, 0, 0];
-
+        var tables = ['NeedAmount','WantAmount','SavingAmount']
         for (var x = 0; x < counter.length; x++) {
             for (var y = 0; y < counter[x]; y++) {
-                if (parseFloat(document.getElementById("NeedAmount[" + y + "]").value)) {
-                    results[x] += parseFloat(document.getElementById("NeedAmount[" + y + "]").value);
+                if (parseFloat(document.getElementById(tables[x] + "[" + y + "]").value)) {
+                    results[x] += parseFloat(document.getElementById(tables[x] + "[" + y + "]").value);
                 }
 
             }
@@ -373,9 +374,7 @@
         }
     }
 
-    function changeFrugality() {
-
-    }; $(document).ready(function () {
+    $(document).ready(function () {
         $(window).keydown(function (event) {
             if (event.keyCode == 13) {
                 event.preventDefault();
