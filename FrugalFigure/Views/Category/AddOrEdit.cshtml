@@ -1,0 +1,52 @@
+﻿@model FrugalFigure.Models.Category
+
+@{
+    ViewData["PageTitle"] = Model.CategoryId == 0 ? "Create a new category" : "Edit category";
+    var categoryType = new string[] {"Need", "Want", "Saving" };
+}
+
+
+<div class="row">
+    <script type="text/javascript">
+        function incomeClicked() {
+            document.getElementById('expenseTypeDiv').hidden = true;
+        }
+        function expenseClicked() {
+            document.getElementById('expenseTypeDiv').hidden = false;
+        }
+    </script>
+    <div class="col-md-7">
+        <div class="widget p-5" style="background-color:#212b36">
+            <form asp-action="AddOrEdit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="CategoryId" value="@Model.CategoryId" />
+                <div class="mb-3">
+                    <div class='e-btn-group custom-rbt-group'>
+                        <input type="radio" id="radioleft" name="Type" value="Expense" checked="@(Model.Type=="Expense")" />
+                        <label class="e-btn" for="radioleft" onclick="expenseClicked()">Expense</label>
+                        <input type="radio" id="radiomiddle" name="Type" value="Income" checked="@(Model.Type=="Income")" />
+                        <label class="e-btn" for="radiomiddle" onclick="incomeClicked()">Income</label>
+                    </div>
+                </div>
+                <div class="mb-3" >
+                    <ejs-textbox id="title" placeholder="Title" ejs-for="Title" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="Title" class="text-danger fs-6"></span>
+                </div>
+
+                <div id="expenseTypeDiv" class="mb-3">
+                        <ejs-dropdownlist dataSource="categoryType" id="expenseType" placeholder="Type" ejs-for="expenseType" floatLabelType="Always"></ejs-dropdownlist>
+                    </div>
+                
+                <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@*@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}*@

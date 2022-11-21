@@ -1,10 +1,8 @@
-using System;
-
-namespace FrugalFigure.Models
+﻿namespace FrugalFigure.Models
 {
     public class ErrorViewModel
     {
-        public string RequestId { get; set; }
+        public string? RequestId { get; set; }
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     }
