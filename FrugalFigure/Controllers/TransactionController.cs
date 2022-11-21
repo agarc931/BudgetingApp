@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using FrugalFigure.Models;
 
 namespace FrugalFigure.Controllers
 {
+    [Authorize]
     public class TransactionController : Controller
     {
         private readonly ApplicationDbContext _context;

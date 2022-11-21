@@ -3,10 +3,13 @@
 *@
 @{
     ViewData["isDashboard"] = true;
+    var sliderString = new string[] { "GHello","BYE" };
 }
 
 @*Summary Widgets*@
 <div class="row mb-4">
+    <header>Budgeting Method</header>
+    <ejs-slider id="default" value="sliderString"></ejs-slider>
 
     <div class="col-md-4">
         <div class="d-flex flex-row widget summary income">
