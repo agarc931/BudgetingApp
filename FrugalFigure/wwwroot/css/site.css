@@ -349,3 +349,12 @@ img.profile-pic {
     .widget.chart {
         padding: 5px;
     }
+a {
+    text-decoration: none;
+    color:white;
+}
+#logoImg
+{
+    max-height:100px;
+    padding-bottom:15px;
+}
