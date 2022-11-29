@@ -28,6 +28,21 @@
         url = "/Transaction"
     });
 
+    menuItems.Add(new
+    {
+        text = "Information",
+        separator = true,
+    });
+    menuItems.Add(new
+    {
+        text = "Financial Literacy",
+        iconCss = "fa-solid fa-book",
+    });
+    menuItems.Add(new
+    {
+        text = "Applications",
+        iconCss = "fa-solid fa-mobile",
+    });
 
     menuItems.Add(new
     {
@@ -48,13 +63,14 @@
 }
 
 
-<ejs-sidebar id="sidebar" width="290px" enableDock dockSize="100px"
-             target=".dock-target" enableGestures="false">
+
+    <ejs-sidebar id="sidebar" width="290px" enableDock dockSize="100px"
+             target=".dock-target" enableGestures="false" >
     <e-content-template>
 
-        <div class="logo-wrapper">
-            <header>Frugal Figure</header>
-        </div>
+
+        <img id="logoImg" src="/Images/Logo.png" />
+        
 
         <ejs-menu id="menu"
                   items="menuItems"
